@@ -120,10 +120,9 @@ Each reviewer must leave **at least 3 comments**, checking for:
 
 ## 💡 Pro Tips
 
-- Small commits = easier reviews  
-- Write for **humans first**, machines second  
-- Use emojis in PR comments 🐱🟢💥  
-- Use **VS Code Live Share** for pair programming  
+- Small commits = easier reviews
+- Write for **humans first**, machines second
+- Use **VS Code Live Share** for pair programming
 
 ---
 
