@@ -35,7 +35,7 @@ DimensionDescription**Impact**How much the smell damages readability, maintainab
 
 See:
 → [Design by Contract](./design-by-contract.md)
-
+    
 The Four Quadrants
 ------------------
 
