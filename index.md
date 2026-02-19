@@ -25,7 +25,7 @@ Participants are **strongly encouraged** to read them progressively.
 ---
 
 ### 2️⃣ The Biological Metaphor (Mental Model)
-📄 [`docs/biological-metaphor.md`](./docs/biological-metaphor.md)
+📄 [`docs/biological-metaphor-for-clean-code.md`](./docs/biological-metaphor-for-clean-code.md)
 
 We use a biological metaphor to reason about software structure and decay:
 
@@ -128,7 +128,7 @@ Work only within your **team branch**.
 
 ---
 
-## 📜 Pull Request Rules
+##   Pull Request Rules
 
 PRs should be **constructive**, **human-friendly**, and **discussion-driven**.
 

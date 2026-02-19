@@ -4,7 +4,7 @@
 
 **Related Docs**
 - [Clean Code, Smells & Refactoring (The Trilogy)](./clean-code-trilogy.md)
-- [Biological Metaphor (Mental Model)](./biological-metaphor.md)
+- [Biological Metaphor (Mental Model)](./biological-metaphor-for-clean-code.md)
 - [Impact / Effort Matrix for Code Smells](./impact-effort-matrix.md)
 - [Design by Contract](./design-by-contract.md)
 
@@ -35,7 +35,7 @@ DimensionDescription**Impact**How much the smell damages readability, maintainab
 
 See:
 → [Design by Contract](./design-by-contract.md)
-    
+
 The Four Quadrants
 ------------------
 

@@ -13,13 +13,13 @@ It should **define the rules of engagement**.
 
 **Related Docs**
 - [Clean Code, Smells & Refactoring (The Trilogy)](./clean-code-trilogy.md)
-- [Biological Metaphor (Mental Model)](./biological-metaphor.md)
+- [Biological Metaphor (Mental Model)](./biological-metaphor-for-clean-code.md)
 - [Impact / Effort Matrix for Code Smells](./impact-effort-matrix.md)
 - [Design by Contract](./design-by-contract.md)
 
 ---
 
-## 🧠 What Is Design by Contract?
+##   What Is Design by Contract?
 
 Design by Contract (DbC) is a design approach where software elements
 clearly state:
@@ -32,7 +32,7 @@ Every interaction becomes a **contract**, not a guess.
 
 ---
 
-## 📜 The Three Pillars of a Contract
+##   The Three Pillars of a Contract
 
 ### 1️⃣ Preconditions (What I Expect)
 Conditions that **must be true before** a method is called.
@@ -70,7 +70,7 @@ Examples:
 
 ---
 
-## 🧼 Design by Contract & Clean Code
+##   Design by Contract & Clean Code
 
 Clean Code is not about beauty - it is about **trust**.
 
@@ -87,7 +87,7 @@ Design by Contract makes that trust explicit.
 
 ---
 
-## 👃 Design by Contract & Code Smells
+##   Design by Contract & Code Smells
 
 Many code smells are actually **broken or missing contracts**.
 
@@ -198,7 +198,7 @@ In Eiffel, contracts were **language-level features**, not comments or conventio
 
 This matters because Design by Contract was never meant to be a testing trick.It was designed as a **language-driven design discipline**.
 
-🧠 Design by Contract in Domain-Driven Design (DDD)
+  Design by Contract in Domain-Driven Design (DDD)
 ---------------------------------------------------
 
 Design by Contract fits **naturally** into Domain-Driven Design.
@@ -355,7 +355,7 @@ This repository is not just about prettier code —it’s about **designing trus
 
 ---
 
-## 🧠 Final Thought
+##   Final Thought
 
 Code is a conversation.  
 Contracts make sure everyone speaks the **same language**.
