@@ -5,6 +5,93 @@ This repo contains all practical exercises, refactors, and examples used through
 
 ---
 
+## 📚 Core Concepts & Reading Path
+
+This workshop is built on a simple but powerful trilogy:
+
+> **Clean Code  =>  Code Smells  =>  Refactoring**
+
+To support this, we provide three foundational documents.  
+Participants are **strongly encouraged** to read them progressively.
+
+### 1️⃣ Clean Code, Smells & Refactoring (The Trilogy)
+📄 [`docs/clean-code-trilogy.md`](./docs/clean-code-trilogy.md)
+
+- What *Clean Code* really means (beyond formatting)
+- Code Smells as **signals**, not bugs
+- Refactoring as a **disciplined, intentional activity**
+- The relationship between decisions, smells, and change
+
+---
+
+### 2️⃣ The Biological Metaphor (Mental Model)
+📄 [`docs/biological-metaphor.md`](./docs/biological-metaphor.md)
+
+We use a biological metaphor to reason about software structure and decay:
+
+| Software Concept | Biological Metaphor |
+|------------------|---------------------|
+| Field / Property | Atom |
+| Method / Function | Molecule |
+| Class / Service | Cell |
+| Module / Layer | Tissue |
+| System | Organism |
+
+This metaphor helps:
+- Detect smells at the *right level*
+- Avoid over-refactoring the wrong abstraction
+- Reason about system health, not just code style
+
+---
+
+### 3️⃣ Impact / Effort Matrix for Code Smells
+📄 [`docs/impact-effort-matrix.md`](./docs/impact-effort-matrix.md)
+
+Not every smell should be refactored.
+
+This document introduces:
+- Prioritization of refactoring work
+- Quick wins vs strategic refactors
+- When **not** to refactor
+- How to balance risk, value, and effort
+
+---
+
+### 4️⃣ Design by Contract
+📄 [`docs/design-by-contract.md`](./docs/design-by-contract.md)
+
+Design by Contract makes **implicit assumptions explicit** and turns
+clean code intentions into **enforceable guarantees**.
+
+This document covers:
+
+- **Preconditions** – what must be true before a method is called  
+- **Postconditions** – what the method guarantees after execution  
+- **Invariants** – rules that must *always* hold for a domain concept  
+
+It also explores:
+
+- **Trust boundaries in code** (where to validate, where to trust)
+- How missing or broken contracts manifest as **code smells**
+- Why **safe refactoring depends on stable contracts**
+- How contracts strengthen **DDD models and ubiquitous language**
+- The role of contracts alongside **tests (not instead of them)**
+
+> Clean Code builds trust through readability.  
+> Design by Contract protects that trust through rules.
+
+
+---
+
+### 📌 How to Use These Documents
+
+- **Before coding:** Read to align mental models
+- **During reviews:** Reference concepts explicitly
+- **During refactoring:** Justify *why* this change, *why now*
+
+> Refactoring without intent is just rewriting.
+
+---
 ## 🎭 Epic Teams
 
 Three legendary teams - each with their unique superpower:
