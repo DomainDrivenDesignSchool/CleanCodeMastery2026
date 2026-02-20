@@ -81,6 +81,14 @@ It also explores:
 > Design by Contract protects that trust through rules.
 
 
+
+---
+
+## 5️⃣ Resources
+📄 [`Resoruces`](./docs/resources.md)
+On the resource page, there is a greate collection of talks, articles, books, blogs and other materials that helps us become better programmers.
+
+
 ---
 
 ### 📌 How to Use These Documents
