@@ -83,6 +83,12 @@ It also explores:
 
 ---
 
+## 5️⃣ Resources
+📄 [`Resoruces`](./docs/resources.md)
+On the resource page, there is a greate collection of talks, articles, books, blogs and other materials that helps us become better programmers.
+
+---
+
 ### 📌 How to Use These Documents
 
 - **Before coding:** Read to align mental models
