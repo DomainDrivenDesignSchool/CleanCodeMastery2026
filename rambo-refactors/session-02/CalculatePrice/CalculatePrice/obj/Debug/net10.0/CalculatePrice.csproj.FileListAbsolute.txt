@@ -1,0 +1,15 @@
+D:\repos\CalculatePrice\CalculatePrice\bin\Debug\net10.0\CalculatePrice.exe
+D:\repos\CalculatePrice\CalculatePrice\bin\Debug\net10.0\CalculatePrice.deps.json
+D:\repos\CalculatePrice\CalculatePrice\bin\Debug\net10.0\CalculatePrice.runtimeconfig.json
+D:\repos\CalculatePrice\CalculatePrice\bin\Debug\net10.0\CalculatePrice.dll
+D:\repos\CalculatePrice\CalculatePrice\bin\Debug\net10.0\CalculatePrice.pdb
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.AssemblyInfoInputs.cache
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.AssemblyInfo.cs
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.csproj.CoreCompileInputs.cache
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.sourcelink.json
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.dll
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\refint\CalculatePrice.dll
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.pdb
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\CalculatePrice.genruntimeconfig.cache
+D:\repos\CalculatePrice\CalculatePrice\obj\Debug\net10.0\ref\CalculatePrice.dll
