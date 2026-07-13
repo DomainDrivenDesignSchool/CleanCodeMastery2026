@@ -270,3 +270,84 @@ The service should now be able to calculate the total price including discount a
 - Document assumptions clearly
 - Use unit tests to validate contracts where possible
 - Reference the biological metaphor when discussing smells and refactors
+
+---
+
+## Completed Findings
+
+### TASK 6 – Code Smell Hunting Results
+
+The loyalty discount feature was added with the smallest practical change:
+
+- Returning customers receive a 5% loyalty discount from the base price.
+- Standard customers still receive the entered discount amount.
+- Discounted price and final total are clamped so they cannot go below 0.
+- Tax is calculated from the discounted price.
+- Tax is capped at 25,000.
+- Basic Design by Contract checks were added for negative base price, discount, and tax ratio.
+
+### Code Smell Cards
+
+| # | Code Smell | Where It Appears | Why It Is a Smell | Refactoring Path | Impact | Effort |
+|---|------------|------------------|-------------------|------------------|--------|--------|
+| 1 | Magic numbers | `0.05M`, `50M`, tax cap values | Business rules are hidden in raw numeric values, which makes policy changes risky and easy to miss. | Replace Magic Number with Named Constant or configuration. | High | Low |
+| 2 | Guard logic in the wrong place | Input validation originally lived in `Main` | Domain invariants should protect the domain even when code is called from somewhere other than the console. | Move Guard Clauses into `Order`, `TaxService`, and request validation. | High | Low |
+| 3 | Conditional complexity | `if/else` for returning customer vs standard customer | Loyalty and standard discount behavior are separate pricing policies but are represented as a boolean branch. | Replace Conditional with Polymorphism, e.g. `IDiscountPolicy`. | High | High |
+| 4 | Unclear naming | `CalculateDiscount` returns price after discount; `customerReturn` was unclear | Names describe the implementation poorly, so callers can misunderstand what value is returned or what the flag means. | Rename Method / Variable, e.g. `CalculatePriceAfterDiscount`, `isReturningCustomer`. | Low | Low |
+| 5 | Primitive obsession | `decimal` values and `bool` flags represent money, tax ratio, discount, and customer type | Important business concepts have no type boundaries, so invalid combinations are easy to pass around. | Introduce Value Objects and Parameter Objects. | High | High |
+| 6 | Long procedural composition | `Main` reads input, validates, builds domain objects, calculates discount, calculates tax, and prints output | One method coordinates too many responsibilities, making changes harder to isolate. | Extract Method or introduce an application service. | Low | Low |
+| 7 | Anemic domain object | `Order` only stores `BasePrice` and `Discount` | The object holds business data but originally did not protect its own invariants or behavior. | Move domain rules closer to `Order`; add invariants in constructor. | High | Low |
+| 8 | Misplaced responsibility | Discount and tax rules are split across ad hoc services and console flow | Pricing policy is scattered, so total price rules are not represented as one coherent calculation. | Move Method / Class, introduce `PricingService` or strategy-based policies. | High | High |
+
+### TASK 7 – Code Smell Impact/Effort Matrix
+
+| Impact | Effort | Example Smells |
+|--------|--------|----------------|
+| High | Low | Magic numbers; Guard logic in the wrong place; Anemic domain object |
+| High | High | Conditional complexity; Primitive obsession; Misplaced responsibility |
+| Low | Low | Unclear naming; Long procedural composition |
+| Low | High | None identified for this exercise |
+
+### TASK 8 – Refactoring Technique Impact/Effort Matrix
+
+| Impact | Effort | Refactoring Techniques |
+|--------|--------|-------------------------|
+| High | Low | Replace Magic Number with Named Constant; Move Guard Clauses; Rename Method / Variable where names block understanding |
+| High | High | Replace Conditional with Polymorphism; Introduce Value Objects; Introduce Parameter Object |
+| Low | Low | Extract small helper methods from `Main`; formatting and local cleanup |
+| Low | High | Broad service reshaping without changing the pricing model |
+
+### TASK 9 – Biological Mapping
+
+| Biological Layer | Example Code Smells | Suggested Refactoring |
+|------------------|---------------------|-----------------------|
+| Atom (Field/Property) | Magic numbers; primitive money/rate values | Named constants; value objects |
+| Molecule (Method/Function) | Unclear method names; long procedural calculation flow | Rename Method; Extract Method |
+| Cell (Class/Service) | Anemic `Order`; misplaced discount logic | Move Method; add class invariants |
+| Tissue (Module/Layer) | Pricing rules split across console flow, discount service, and tax service | Introduce application/domain service boundary |
+| Organism (System) | Customer pricing policy modeled as boolean branching | Replace Conditional with Polymorphism; strategy-based pricing policies |
+
+This mapping works because smaller smells usually affect local comprehension first, while larger smells affect where business behavior lives and how safely the system can grow.
+
+### TASK 10 – Design by Contract Notes
+
+Preconditions added:
+
+- `basePrice >= 0`
+- `discount >= 0`
+- `taxRatio >= 0`
+- Tax calculation input price must be non-negative.
+
+Postconditions enforced:
+
+- Discounted price cannot go below 0.
+- Final total cannot go below 0.
+- Tax cannot exceed 25,000.
+
+Invariants protected:
+
+- `Order.BasePrice` is always non-negative.
+- `Order.Discount` is always non-negative.
+- `TaxService` always applies the configured tax cap.
+
+Contracts mitigate the guard-location, anemic-domain, primitive-value, and magic-number smells by making the pricing assumptions explicit. They also make later refactoring safer because extracted services or polymorphic discount policies must preserve the same observable rules.
