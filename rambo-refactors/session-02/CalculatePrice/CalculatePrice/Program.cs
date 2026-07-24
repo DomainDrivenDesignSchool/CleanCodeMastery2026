@@ -12,17 +12,13 @@
         decimal taxRatio = decimal.Parse(Console.ReadLine()!);
 
         Console.WriteLine("Is customer returning? (true/false):");
-        bool customerReturn = bool.Parse(Console.ReadLine()!);
-
-        // Precondition
-        if (basePrice < 0)
-            throw new ArgumentException("BasePrice must be non-negative");
+        bool isReturningCustomer = bool.Parse(Console.ReadLine()!);
 
         var order = new Order(basePrice, discount);
 
         var discountService = new DiscountService(order);
 
-        decimal priceAfterDiscount = discountService.CalculateDiscount(customerReturn);
+        decimal priceAfterDiscount = discountService.CalculateDiscount(isReturningCustomer);
 
         var taxService = new TaxService();
 
@@ -30,10 +26,7 @@
 
         decimal tax = taxService.CalculateTax(taxRequest);
 
-        decimal total = priceAfterDiscount + tax;
-
-        if (total < 0)
-            throw new Exception("Total cannot be less than zero");
+        decimal total = Math.Max(0, priceAfterDiscount + tax);
 
         Console.WriteLine("=================================");
         Console.WriteLine($"Base Price: {basePrice}");
@@ -51,11 +44,17 @@ public record CalculateTaxRequest(decimal BasePrice, decimal TaxRatio);
 public class TaxService
 {
     //invariant condition
-    private const decimal MaxTax = 25M;
+    private const decimal MaxTax = 25_000M;
     private const decimal MinimumPrice = 50M;
 
     public decimal CalculateTax(CalculateTaxRequest request)
     {
+        if (request.BasePrice < 0)
+            throw new ArgumentException("Tax base price must be non-negative", nameof(request));
+
+        if (request.TaxRatio < 0)
+            throw new ArgumentException("Tax ratio must be non-negative", nameof(request));
+
         if (request.BasePrice < MinimumPrice)
             return 0;
 
@@ -80,13 +79,13 @@ public class DiscountService
         _order = order;
     }
 
-    public decimal CalculateDiscount(bool customerReturn)
+    public decimal CalculateDiscount(bool isReturningCustomer)
     {
 
-        if (customerReturn)
-            return _order.BasePrice - LoyaltyDiscount();
+        if (isReturningCustomer)
+            return Math.Max(0, _order.BasePrice - LoyaltyDiscount());
 
-        return _order.BasePrice - _order.Discount;
+        return Math.Max(0, _order.BasePrice - _order.Discount);
     }
 
     private decimal LoyaltyDiscount()
@@ -102,6 +101,12 @@ public class Order
 
     public Order(decimal basePrice, decimal discount)
     {
+        if (basePrice < 0)
+            throw new ArgumentException("Base price must be non-negative", nameof(basePrice));
+
+        if (discount < 0)
+            throw new ArgumentException("Discount must be non-negative", nameof(discount));
+
         BasePrice = basePrice;
         Discount = discount;
     }
